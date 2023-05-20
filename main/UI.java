@@ -61,6 +61,9 @@ public class UI {
                     messageOn = false;
                 }
             }
+            if(panel.currentMap == 2 && panel.slimeArr[8] != null){
+                panel.slimeArr[8].drawBossHP(g2);
+            }
             drawHP();
             drawTime();
             if(panel.gameComplete){
@@ -142,6 +145,7 @@ public class UI {
     }
 
     private void drawTime() {
+        g2.setColor(Color.white);
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 30));
         g2.drawString("Time: "+String.format("%.2f",playTime), panel.scaledTile*16, panel.scaledTile);
     }

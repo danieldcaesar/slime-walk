@@ -2,6 +2,7 @@ package main;
 
 import javax.swing.*;
 
+import animation.Lighting;
 import entity.Player;
 import entity.Slime;
 import item.Item;
@@ -9,8 +10,6 @@ import item.Projectile;
 import tile.TileManager;
 
 import java.awt.*;
-// import java.io.BufferedInputStream;
-// import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 public class GamePanel extends JPanel implements Runnable{
@@ -45,6 +44,7 @@ public class GamePanel extends JPanel implements Runnable{
     public Slime slimeArr[] = new Slime[12];
     public Player Abraham;
     public Projectile stone = new Projectile(this);
+    public Lighting lighting;
 
 
     public int gameState;
@@ -62,7 +62,7 @@ public class GamePanel extends JPanel implements Runnable{
         this.addKeyListener(keyHandler);
         this.addMouseListener(mouseHandler);
         this.addMouseMotionListener(mouseHandler);
-        this.setFocusable(true);               
+        this.setFocusable(true);   
 
     }
 
@@ -71,6 +71,7 @@ public class GamePanel extends JPanel implements Runnable{
         itemManager.setObject();
         itemManager.setSlimes();
         gameState = titleState;
+        lighting = new Lighting(this, 500);
     }
     public void setupLevel(int level){
         currentMap = level;
@@ -156,7 +157,7 @@ public class GamePanel extends JPanel implements Runnable{
         if(gameState == titleState){
             gui.draw(g2);
         }
-        else{                
+        else{    
             tileManager.draw(g2);
             for(int i=0; i<items.length; i++){
                 if(items[i] != null){
@@ -170,7 +171,12 @@ public class GamePanel extends JPanel implements Runnable{
                 }
             }
             stone.draw(g2);
+            if(currentMap == 2){
+                lighting.draw(g2);
+
+            }            
             gui.draw(g2);
+            
         }
         
 

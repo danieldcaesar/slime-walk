@@ -38,7 +38,9 @@ public class SlimeBoss extends Slime{
         screenX = worldX - panel.Abraham.worldX + panel.Abraham.screenX;
         screenY = worldY - panel.Abraham.worldY + panel.Abraham.screenY;
         slAnimation.draw(g2, screenX, screenY);
-
+            
+    }
+    public void drawBossHP(Graphics2D g2){
         double hpScale = (double)(panel.scaledTile*8/maxHP);
         double hpBar = hpScale*hp;
 
@@ -64,7 +66,6 @@ public class SlimeBoss extends Slime{
             g2.setColor(new Color(168, 20, 20));
             g2.fillRect(x, y, (int)hpBar, 20);
         }
-            
     }
     public void move(){
         actionCounter++;

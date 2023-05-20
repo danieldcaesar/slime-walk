@@ -46,6 +46,7 @@ public class Slime extends Entity{
         // slAnimation.setLocation(worldX, worldY);
         direction = "down";
     }
+    public void drawBossHP(Graphics2D g2){}
     public void setLocation(int x, int y){
         worldX = panel.scaledTile * x;
         worldY = panel.scaledTile * y;
@@ -122,6 +123,10 @@ public class Slime extends Entity{
                 panel.items[i] = drop;
                 panel.items[i].worldX = worldX;
                 panel.items[i].worldY = worldY;
+                if(panel.currentMap == 2){
+                    panel.items[i].worldX = panel.Abraham.worldX;
+                    panel.items[i].worldY = panel.Abraham.worldY-75;
+                }
                 break;
             }
         }
